@@ -12,4 +12,14 @@ print("\nData Types:")
 print(df.dtypes)
 
 # 3. Summary stats - mean, median, min, max, count
-print
+print("\n=== SALES COLUMN STATS ===")
+print(df['SALES'].describe())
+
+# 4. Filter rows + select columns
+high_sales = df[df['SALES'] > 5000][['ORDERNUMBER', 'ORDERDATE', 'SALES', 'COUNTRY', 'STATUS']]
+print(f"\n=== ORDERS WITH SALES > 5000: {len(high_sales)} rows ===")
+print(high_sales.head())
+
+# 5. Save filtered results
+high_sales.to_csv('high_value_sales.csv', index=False)
+print("\nSaved to 'high_value_sales.csv'")
